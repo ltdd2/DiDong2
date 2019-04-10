@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ChiTietMonAnActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbarChiTiet"
+        android:background="#555555"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txtTenMon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên Món Ăn"
+                android:textColor="@color/colorAccent"
+                android:layout_marginBottom="20dp"
+                android:textSize="35dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/txtNgLieu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtTenMon"
+                android:text="Nguyên liệu"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:textSize="@dimen/sizetext" />
+            <TextView
+                android:id="@+id/txtNguyenLieu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtNgLieu"
+                android:layout_marginTop="6dp"
+                android:textSize="@dimen/sixetext2"
+                android:textColor="#000"
+                android:text="-thịt, cá, rau củ" />
+            <ImageView
+                android:id="@+id/imgMonAn"
+                android:layout_width="202dp"
+                android:layout_height="200dp"
+                android:layout_below="@id/txtTenMon"
+                android:scaleType="fitStart"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/goimuc" />
+            <TextView
+                android:id="@+id/txtCachLam"
+                android:layout_below="@id/imgMonAn"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cách Làm: "
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="@dimen/sizetext"/>
+            <TextView
+                android:id="@+id/txtCTCL1"
+                android:layout_below="@id/txtCachLam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sixetext2"
+                android:textColor="#000"
+                android:text="Bước 1:"/>
+            <TextView
+                android:id="@+id/txtBuoc1"
+                android:layout_below="@id/txtCTCL1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sixetext2"
+                android:textColor="#000"
+                android:text="Bước 1:"/>
+            <ImageView
+                android:id="@+id/imgBuoc1"
+                android:layout_below="@id/txtBuoc1"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:scaleType="fitStart"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/goimuc"/>
+            <TextView
+                android:id="@+id/txtCTCL2"
+                android:layout_below="@id/imgBuoc1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sixetext2"
+                android:textColor="#000"
+                android:text="Bước 2"/>
+            <TextView
+                android:id="@+id/txtBuoc2"
+                android:layout_below="@id/txtCTCL2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sixetext2"
+                android:textColor="#000"
+                android:text="Bước 2"/>
+            <ImageView
+                android:id="@+id/imgBuoc2"
+                android:layout_below="@id/txtBuoc2"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:scaleType="fitStart"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/goimuc"/>
+
+            <TextView
+                android:id="@+id/txtCTCL3"
+                android:layout_below="@id/imgBuoc2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sixetext2"
+                android:textColor="#000"
+                android:text="Bước 3"/>
+            <TextView
+                android:id="@+id/txtBuoc3"
+                android:layout_below="@id/txtCTCL3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sixetext2"
+                android:textColor="#000"
+                android:text="Bước 3"/>
+            <ImageView
+                android:id="@+id/imgBuoc3"
+                android:layout_below="@id/txtBuoc3"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:scaleType="fitStart"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/goimuc"/>
+
+            <TextView
+                android:id="@+id/txtCTCL4"
+                android:layout_below="@id/imgBuoc3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sixetext2"
+                android:textColor="#000"
+                android:text="Bước 4:"/>
+            <TextView
+                android:id="@+id/txtBuoc4"
+                android:layout_below="@id/txtCTCL4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sixetext2"
+                android:textColor="#000"
+                android:text="Bước 4:"/>
+            <ImageView
+                android:id="@+id/imgBuoc4"
+                android:layout_below="@id/txtBuoc4"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:scaleType="fitStart"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/goimuc"/>
+
+            <TextView
+                android:id="@+id/txtCTCL5"
+                android:layout_below="@id/imgBuoc4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sixetext2"
+                android:textColor="#000"
+                android:text="Thành Phẩm"/>
+            <TextView
+                android:id="@+id/txtThanhPham"
+                android:layout_below="@id/txtCTCL5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sixetext2"
+                android:textColor="#000"
+                android:text="Thành Phẩm"/>
+            <ImageView
+                android:id="@+id/imgThanhPham"
+                android:layout_below="@id/txtThanhPham"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:scaleType="fitStart"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/goimuc"/>
+        </RelativeLayout>
+    </ScrollView>
+
+
+</LinearLayout>
