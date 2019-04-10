@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".GameActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@drawable/game"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btnNew"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button"
+            android:text="GAME MỚI"
+            style="@style/btnChoose"/>
+        <Button
+            android:id="@+id/btnChoiLai"
+            android:text="CHƠI LẠI"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button"
+            style="@style/btnChoose"/>
+        <Button
+            android:id="@+id/btnTongDiem"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button"
+            android:text="Tổng Điểm"
+            style="@style/btnChoose"/>
+        <Button
+            android:id="@+id/btnThoat"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button"
+            android:text="Thoát"
+            style="@style/btnChoose"/>
+    </LinearLayout>
+
+</LinearLayout>
