@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+     <item android:id="@+id/montrangmieng" android:title="Món Tráng Miệng" android:icon="@drawable/mon" />
+     <item android:id="@+id/monxao" android:title="Món Xào" android:icon="@drawable/mon" />
+     <item android:id="@+id/monlau" android:title="Món Lẩu" android:icon="@drawable/mon" />
+     <item  android:id="@+id/monkho" android:title="Món Kho" android:icon="@drawable/mon" />
+     <item android:id="@+id/monchien" android:title="Món Chiên" android:icon="@drawable/mon"/>
+     <item android:id="@+id/quanan" android:title="Danh Sách Quán Ăn" android:icon="@drawable/location"/>
+     <item android:id="@+id/thoat" android:title="Thoát" android:icon="@drawable/exit"/>
+</menu>

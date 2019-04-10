@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginLeft="5dp"
+    app:cardCornerRadius="10dp">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                        <ImageView
+                            android:scaleType="fitXY"
+                            android:id="@+id/imgHinhQAn"
+                            android:src="@drawable/goicatre"
+                            android:layout_marginTop="10dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp" />
+                        <TextView
+                            android:gravity="center"
+                            android:id="@+id/txtTenQAn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#ff00"
+                            android:textSize="20dp"
+                            android:text="Tên Món Ăn"/>
+                        <TextView
+                            android:gravity="center"
+                            android:id="@+id/txtDiaChiQAn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Quận 7, Hồ Chí Minh"/>
+                </LinearLayout>
+        </FrameLayout>
+</android.support.v7.widget.CardView>
