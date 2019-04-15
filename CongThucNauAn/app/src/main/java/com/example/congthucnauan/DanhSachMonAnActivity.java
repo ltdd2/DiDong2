@@ -34,7 +34,6 @@ public class DanhSachMonAnActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String monan = intent.getStringExtra("Key");
         int id = intent.getIntExtra("ID",0);
-        Toast.makeText(this,id+"",Toast.LENGTH_SHORT).show();
         toolbarDSMonAn.setTitle(monan);
         setSupportActionBar(toolbarDSMonAn);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
