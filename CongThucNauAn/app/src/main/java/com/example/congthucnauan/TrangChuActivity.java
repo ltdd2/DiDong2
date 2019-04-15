@@ -26,9 +26,11 @@ import android.widget.ViewFlipper;
 
 import com.example.congthucnauan.adapter.MonAnNewAdapter;
 import com.example.congthucnauan.adapter.QuanAnAdapter;
+import com.example.congthucnauan.adapter.VideoAdapter;
 import com.example.congthucnauan.database.Database;
 import com.example.congthucnauan.models.MonAn;
 import com.example.congthucnauan.models.QuanAn;
+import com.example.congthucnauan.models.Video;
 
 import java.util.ArrayList;
 
@@ -36,11 +38,13 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     Toolbar toolbar;
-    RecyclerView reMonAn,reQuanAn;
+    RecyclerView reMonAn,reQuanAn,reVideo;
     MonAnNewAdapter monAnAdapter;
     QuanAnAdapter quanAnAdapter;
+    VideoAdapter videoAdapter;
     ArrayList<QuanAn> quanAns;
     ArrayList<MonAn> monAns;
+    ArrayList<Video> videos;
     ViewFlipper viewFlipper;
     Animation in ,out;
     String[] hinh={"goimuc","goioc","goitom"};
@@ -79,14 +83,16 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
         reMonAn = (RecyclerView) findViewById(R.id.reMonAn);
         reMonAn.setLayoutManager(new GridLayoutManager(this,2));
         monAns = new ArrayList<MonAn>();
-       for (int i = 0 ; i< DuLieuMonAn.imgHinh.length; i++){
+      /* for (int i = 0 ; i< DuLieuMonAn.imgHinh.length; i++){
            monAns.add(new MonAn(DuLieuMonAn.imgHinh[i],DuLieuMonAn.txtTenMonAn[i],DuLieuMonAn.txtMoTaMonAn[i]));
-       }
-      /* Cursor  data = ManHinhChaoActivity.database.GetData("SELECT * FROM MonAn");
-       while (data.moveToNext()){
-           String hinh = data.getString(10);
-           monAns.add(new MonAn(hinh,"mon 1","mo ta 1"));
        }*/
+       Cursor  data = ManHinhChaoActivity.database.GetData("SELECT * FROM MonAn");
+       while (data.moveToNext()){
+           String ten = data.getString(1);
+           String mota = data.getString(2);
+           String hinh = data.getString(10);
+           monAns.add(new MonAn(hinh,ten,mota));
+       }
         monAnAdapter = new MonAnNewAdapter(monAns,this);
         monAnAdapter.notifyDataSetChanged();
         reMonAn.setAdapter(monAnAdapter);
@@ -104,6 +110,25 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
         quanAnAdapter =  new QuanAnAdapter(quanAns,this);
         reQuanAn.setAdapter(quanAnAdapter);
         reQuanAn.setItemAnimator(new DefaultItemAnimator());
+        //video
+        reVideo = (RecyclerView) findViewById(R.id.reVideo);
+        videos = new ArrayList<>();
+        Cursor v = ManHinhChaoActivity.database.GetData("SELECT * FROM Video");
+        while (v.moveToNext()){
+            String ten = v.getString(1);
+            String hinh = v.getString(2);
+            String tenkd  = v.getString(3);
+            videos.add(new Video(ten,hinh,tenkd));
+            Toast.makeText(this,ten.toString(),Toast.LENGTH_SHORT).show();
+        }
+
+        /*for(int i = 0 ; i<DuLieuVideo.imgHinhVideo.length;i++){
+            videos.add(new Video(DuLieuVideo.txtTenVideo[i],DuLieuVideo.imgHinhVideo[i],DuLieuVideo.idVideo[i]));
+        }*/
+        videoAdapter = new VideoAdapter(videos,this);
+        reVideo.setLayoutManager(new GridLayoutManager(this,2));
+        reVideo.setAdapter(videoAdapter);
+        reVideo.setItemAnimator(new DefaultItemAnimator());
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -120,37 +145,50 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
             case R.id.montrangmieng:
                 Intent intent = new Intent(TrangChuActivity.this,DanhSachMonAnActivity.class);
                 intent.putExtra("Key","Món Tráng Miệng");
+                intent.putExtra("ID",1);
                 startActivity(intent);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.monxao:
                 Intent intent1 = new Intent(TrangChuActivity.this,DanhSachMonAnActivity.class);
                 intent1.putExtra("Key","Món Xào");
+                intent1.putExtra("ID",2);
                 startActivity(intent1);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.monlau:
                 Intent intent2 = new Intent(TrangChuActivity.this,DanhSachMonAnActivity.class);
                 intent2.putExtra("Key","Món Lẩu");
+                intent2.putExtra("ID",3);
                 startActivity(intent2);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.monkho:
                 Intent intent3 = new Intent(TrangChuActivity.this,DanhSachMonAnActivity.class);
                 intent3.putExtra("Key","Món Kho");
+                intent3.putExtra("ID",4);
                 startActivity(intent3);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.monchien:
                 Intent intent4 = new Intent(TrangChuActivity.this,DanhSachMonAnActivity.class);
                 intent4.putExtra("Key","Món Chiên");
+                intent4.putExtra("ID",5);
                 startActivity(intent4);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.quanan:
                 Intent intent5 = new Intent(TrangChuActivity.this,QuanAnActivity.class);
                 intent5.putExtra("Key","DANH SÁCH QUÁN ĂN");
+                intent5.putExtra("ID",6);
                 startActivity(intent5);
+                drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            case R.id.video:
+                Intent intent6 = new Intent(TrangChuActivity.this,ManHinhVideoActivity.class);
+                intent6.putExtra("Key","VIDEO HƯỚNG DẪN NẤU ĂN");
+                intent6.putExtra("ID",7);
+                startActivity(intent6);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.thoat:

@@ -3,18 +3,13 @@ package com.example.congthucnauan.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.congthucnauan.ManHinhVideoActivity;
 import com.example.congthucnauan.PlayVideoActivity;
 import com.example.congthucnauan.R;
 import com.example.congthucnauan.models.Video;
@@ -22,53 +17,53 @@ import com.example.congthucnauan.models.Video;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VideoAdapter extends BaseAdapter {
-    List<Video> videos;
+public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
+    ArrayList<Video> videos;
     Context context;
-    int layout;
 
-    public VideoAdapter(List<Video> videos, Context context, int layout) {
+    public VideoAdapter(ArrayList<Video> videos, Context context) {
         this.videos = videos;
         this.context = context;
-        this.layout = layout;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, final int i) {
+        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
+        View v = inflater.inflate(R.layout.item_video,viewGroup,false);
+        return new ViewHolder(v);
     }
 
     @Override
-    public int getCount() {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + videos.get(i).getImgHinhVideo());
+        viewHolder.imgHinhVideo.setImageURI(imgUri);
+        viewHolder.txtTenVideo.setText(videos.get(i).getTenVideo());
+        viewHolder.idVideo.setText(videos.get(i).getIdVideo());
+    }
+
+    @Override
+    public int getItemCount() {
         return videos.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        final TextView txtTenVideo;
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgHinhVideo;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(R.layout.item_video,null);
-        txtTenVideo = (TextView) convertView.findViewById(R.id.txtVideo);
-        imgHinhVideo = (ImageView) convertView.findViewById(R.id.imgVideo);
-        Video video = videos.get(position);
-        txtTenVideo.setText(video.getTenVideo());
-        Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + videos.get(position).getImgHinhVideo());
-        imgHinhVideo.setImageURI(imgUri);
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, PlayVideoActivity.class);
-                intent.putExtra("Key",videos.get(position).getTenVideo());
-                intent.putExtra("BH",videos.get(position).getIdVideo());
-                context.startActivity(intent);
-            }
-        });
-        return convertView;
+        TextView  txtTenVideo,idVideo;
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imgHinhVideo = itemView.findViewById(R.id.imgVideo);
+            txtTenVideo = itemView.findViewById(R.id.txtVideo);
+            idVideo = itemView.findViewById(R.id.idVideo);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context,PlayVideoActivity.class);
+                    i.putExtra("Key",txtTenVideo.getText().toString());
+                    i.putExtra("Id",idVideo.getText().toString());
+                    context.startActivity(i);
+                }
+            });
+        }
     }
 }

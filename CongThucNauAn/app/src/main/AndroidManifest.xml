@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ManHinhVideoActivity">
+        <activity android:name=".ManHinhChaoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,11 +21,11 @@
 
         </activity>
         <activity android:name=".ChiTietMonAnActivity" />
-        <activity android:name=".ManHinhChaoActivity"></activity>
+        <activity android:name=".TrangChuActivity"></activity>
         <activity android:name=".ReviewQuanAnActivity" />
         <activity android:name=".DanhSachMonAnActivity" />
         <activity android:name=".QuanAnActivity" />
-        <activity android:name=".TrangChuActivity" />
+        <activity android:name=".ManHinhVideoActivity" />
     </application>
 
 </manifest>

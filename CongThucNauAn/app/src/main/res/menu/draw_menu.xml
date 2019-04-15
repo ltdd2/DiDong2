@@ -6,6 +6,7 @@
      <item android:id="@+id/monlau" android:title="Món Lẩu" android:icon="@drawable/mon" />
      <item  android:id="@+id/monkho" android:title="Món Kho" android:icon="@drawable/mon" />
      <item android:id="@+id/monchien" android:title="Món Chiên" android:icon="@drawable/mon"/>
+     <item android:id="@+id/video" android:title="Hướng Dẫn Nấu Ăn" android:icon="@drawable/mon"/>
      <item android:id="@+id/quanan" android:title="Danh Sách Quán Ăn" android:icon="@drawable/location"/>
      <item android:id="@+id/thoat" android:title="Thoát" android:icon="@drawable/exit"/>
 </menu>

@@ -18,10 +18,10 @@ public class ManHinhChaoActivity extends AppCompatActivity {
             public void run() {
                 try {
                     Thread.sleep(500);
-                }catch (Exception e){
+                } catch (Exception e) {
 
-                }finally {
-                    Intent i = new Intent(ManHinhChaoActivity.this,TrangChuActivity.class);
+                } finally {
+                    Intent i = new Intent(ManHinhChaoActivity.this, TrangChuActivity.class);
                     startActivity(i);
 
                 }
@@ -29,9 +29,10 @@ public class ManHinhChaoActivity extends AppCompatActivity {
         });
         thread.start();
         //DATABASE
-        database =  new Database(this,"CongThucNauAn.sqlite",null,1);
+        database = new Database(this, "CongThucNauAn.sqlite", null, 1);
         //Tạo bảng MonAn
         database.QueryData("CREATE TABLE IF NOT EXISTS MonAn(Id INTEGER PRIMARY KEY AUTOINCREMENT, TenMonAn VARCHAR(100), MoTa TEXT, IdDanhMuc INTEGER,NguyenLieu TEXT,Buoc1 TEXT,Buoc2 TEXT,Buoc3 TEXT, Buoc4 TEXT, ThanhPham TEXT,Hinh VARCHAR(20),Hinh1 VARCHAR(20),Hinh2 VARCHAR(20),Hinh3 VARCHAR(20),Hinh4 VARCHAR(20),Hinh5 VARCHAR(20))");
-       // database.QueryData("INSERT INTO MonAn VALUES(null,'mon 2','mo ta mon an',1,'nguyen lieu','buoc1','buoc1','buoc1','buoc1','goitom','thitkho','goitom','goitom','goitom','goitom','goitom')");
+        database.QueryData("CREATE TABLE IF NOT EXISTS Video(Id INTEGER PRIMARY KEY AUTOINCREMENT,TenVideo VARCHAR(50),Hinh VARCHAR(50), TenKhongDau VARCHAR(50))");
+
     }
 }

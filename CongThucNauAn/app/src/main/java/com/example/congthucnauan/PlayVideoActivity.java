@@ -22,7 +22,7 @@ public class PlayVideoActivity extends AppCompatActivity {
         toolbarPlay = (Toolbar) findViewById(R.id.toolbarPlay);
         Intent intent = getIntent();
         String txtPlay = intent.getStringExtra("Key");
-        String tenBH = intent.getStringExtra("BH");
+        String tenBH = intent.getStringExtra("Id");
         toolbarPlay.setTitle(txtPlay);
         setSupportActionBar(toolbarPlay);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -53,7 +53,6 @@ public class PlayVideoActivity extends AppCompatActivity {
 
     public int getRawResIdByName(String resName) {
         String pkgName = this.getPackageName();
-
         // Trả về 0 nếu không tìm thấy.
         int resID = this.getResources().getIdentifier(resName, "raw", pkgName);
         Log.i("AndroidVideoView", "Res Name: " + resName + "==> Res ID = " + resID);

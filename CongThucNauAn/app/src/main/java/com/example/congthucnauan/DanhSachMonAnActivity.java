@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.congthucnauan.adapter.MonAnAdapter;
 import com.example.congthucnauan.adapter.MonAnNewAdapter;
@@ -32,6 +33,8 @@ public class DanhSachMonAnActivity extends AppCompatActivity {
         toolbarDSMonAn = (Toolbar) findViewById(R.id.toolbarDSMonAn);
         Intent intent = getIntent();
         String monan = intent.getStringExtra("Key");
+        int id = intent.getIntExtra("ID",0);
+        Toast.makeText(this,id+"",Toast.LENGTH_SHORT).show();
         toolbarDSMonAn.setTitle(monan);
         setSupportActionBar(toolbarDSMonAn);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -47,8 +50,15 @@ public class DanhSachMonAnActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         reDSMonAn.setLayoutManager(linearLayoutManager);
         monAns = new ArrayList<>();
-        for (int i = 0; i < DuLieuMonAn.imgHinh.length; i++) {
+        /*for (int i = 0; i < DuLieuMonAn.imgHinh.length; i++) {
             monAns.add(new MonAn(DuLieuMonAn.imgHinh[i], DuLieuMonAn.txtTenMonAn[i],DuLieuMonAn.txtMoTaMonAn[i]));
+        }*/
+        Cursor cursor = ManHinhChaoActivity.database.GetData("SELECT * FROM MonAn WHERE IdDanhMuc = '"+id+"'");
+        while (cursor.moveToNext()){
+            String ten = cursor.getString(1);
+            String mota = cursor.getString(2);
+            String hinh = cursor.getString(10);
+            monAns.add(new MonAn(hinh,ten,mota));
         }
         monAnAdapter = new MonAnAdapter(monAns,this);
         reDSMonAn.setAdapter(monAnAdapter);

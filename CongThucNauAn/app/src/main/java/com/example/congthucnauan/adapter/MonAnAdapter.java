@@ -68,7 +68,6 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.ViewHolder> 
                    Intent i = new Intent(context, ChiTietMonAnActivity.class);
                    i.putExtra("Key",txtTenMonAn.getText());
                    context.startActivity(i);
-                   Toast.makeText(context,"Chi Tiet Mon An",Toast.LENGTH_SHORT).show();
                }
            });
            Animation animation = AnimationUtils.loadAnimation(context,R.anim.recyclerview_anim);

@@ -13,10 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </android.support.v7.widget.Toolbar>
-    <ListView
-        android:id="@+id/lvVideo"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reVideo"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    </ListView>
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
