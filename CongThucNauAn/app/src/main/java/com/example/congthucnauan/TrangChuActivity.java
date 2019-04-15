@@ -47,7 +47,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
     ArrayList<Video> videos;
     ViewFlipper viewFlipper;
     Animation in ,out;
-    String[] hinh={"goimuc","goioc","goitom"};
+    ArrayList<String> hinh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,10 +60,16 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
         NavigationView navigationView = findViewById(R.id.navigation);
         navigationView.setNavigationItemSelectedListener(this);
         //Chuyển hình
+        hinh = new ArrayList<>();
+        Cursor  dt = ManHinhChaoActivity.database.GetData("SELECT * FROM MonAn");
+        while (dt.moveToNext()){
+            String img = dt.getString(10);
+            hinh.add(img);
+        }
         viewFlipper = findViewById(R.id.viewFliper);
-        for ( int i = 0; i<hinh.length;i++){
+        for ( int i = 0; i<hinh.size();i++){
             ImageView img = new ImageView(this);
-            Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh[i]);
+            Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh.get(i));
             img.setImageURI(imgUri);
             img.setScaleType(ImageView.ScaleType.FIT_XY);
             viewFlipper.addView(img);
@@ -147,6 +153,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
                 intent.putExtra("Key","Món Tráng Miệng");
                 intent.putExtra("ID",1);
                 startActivity(intent);
+                overridePendingTransition(R.anim.in,R.anim.out);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.monxao:
@@ -154,6 +161,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
                 intent1.putExtra("Key","Món Xào");
                 intent1.putExtra("ID",2);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.in,R.anim.out);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.monlau:
@@ -161,6 +169,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
                 intent2.putExtra("Key","Món Lẩu");
                 intent2.putExtra("ID",3);
                 startActivity(intent2);
+                overridePendingTransition(R.anim.in,R.anim.out);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.monkho:
@@ -168,6 +177,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
                 intent3.putExtra("Key","Món Kho");
                 intent3.putExtra("ID",4);
                 startActivity(intent3);
+                overridePendingTransition(R.anim.in,R.anim.out);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.monchien:
@@ -175,6 +185,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
                 intent4.putExtra("Key","Món Chiên");
                 intent4.putExtra("ID",5);
                 startActivity(intent4);
+                overridePendingTransition(R.anim.in,R.anim.out);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.quanan:
@@ -182,6 +193,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
                 intent5.putExtra("Key","DANH SÁCH QUÁN ĂN");
                 intent5.putExtra("ID",6);
                 startActivity(intent5);
+                overridePendingTransition(R.anim.in,R.anim.out);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.video:
@@ -189,6 +201,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
                 intent6.putExtra("Key","VIDEO HƯỚNG DẪN NẤU ĂN");
                 intent6.putExtra("ID",7);
                 startActivity(intent6);
+                overridePendingTransition(R.anim.in,R.anim.out);
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.thoat:
