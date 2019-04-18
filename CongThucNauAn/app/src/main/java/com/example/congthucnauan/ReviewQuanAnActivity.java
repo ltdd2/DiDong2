@@ -49,6 +49,8 @@ public class ReviewQuanAnActivity extends AppCompatActivity {
             String diachi =  cursor.getString(6);
             String giomocua =  cursor.getString(7);
             String giaban =  cursor.getString(8);
+            final String vTri1 =  cursor.getString(13);
+            final String vTri2 =  cursor.getString(14);
             Uri img = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh);
             Uri img2 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh1);
             Uri img3 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh2);
@@ -65,6 +67,15 @@ public class ReviewQuanAnActivity extends AppCompatActivity {
             imgHinh1.setImageURI(img2);
             imgHinh2.setImageURI(img3);
             imgHinh3.setImageURI(img4);
+            txtChiDuong.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(ReviewQuanAnActivity.this, BanDoActivity.class);
+                    i.putExtra("ViTri1",vTri1);
+                    i.putExtra("ViTri2",vTri2);
+                    startActivity(i);
+                }
+            });
 
         }
     }
