@@ -36,7 +36,7 @@ ImageView imgMonAn,imgBuoc1,imgBuoc2,imgBuoc3,imgBuoc4,imgThanhPham;
         });
         //Anh xa
         AnhXa();
-        Cursor cursor = ManHinhChaoActivity.database.GetData("SELECT * FROM MonAn WHERE TenMonAn LIKE '"+monAn+"'");
+        Cursor cursor = TrangChuActivity.database.GetData("SELECT * FROM MonAn WHERE TenMonAn LIKE '"+monAn+"'");
         while (cursor.moveToNext()){
            String tenmon = cursor.getString(1);
            String  nguyenlieu = cursor.getString(4);
@@ -45,12 +45,11 @@ ImageView imgMonAn,imgBuoc1,imgBuoc2,imgBuoc3,imgBuoc4,imgThanhPham;
             String b3 = cursor.getString(7);
             String b4 = cursor.getString(8);
             String thanhpham = cursor.getString(9);
-            String hinh = cursor.getString(10);
-            String hinh1 = cursor.getString(11);
-            String hinh2 = cursor.getString(12);
-            String hinh3 = cursor.getString(13);
-            String hinh4 = cursor.getString(14);
-            String hinh5 = cursor.getString(15);
+            String hinh = cursor.getString(14);
+            String hinh1 = cursor.getString(10);
+            String hinh2 = cursor.getString(11);
+            String hinh3 = cursor.getString(12);
+            String hinh4 = cursor.getString(13);
             txtMonAn.setText("Cách Làm Món "+tenmon);
             txtNguyenLieu.setText(nguyenlieu.toString());
             txtBuoc1.setText(b1.toString());
@@ -63,7 +62,7 @@ ImageView imgMonAn,imgBuoc1,imgBuoc2,imgBuoc3,imgBuoc4,imgThanhPham;
             Uri img2 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh2);
             Uri img3 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh3);
             Uri img4 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh4);
-            Uri img5 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh5);
+            Uri img5 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh);
             imgMonAn.setImageURI(img);
             imgBuoc1.setImageURI(img1);
             imgBuoc2.setImageURI(img2);
@@ -87,6 +86,5 @@ ImageView imgMonAn,imgBuoc1,imgBuoc2,imgBuoc3,imgBuoc4,imgThanhPham;
         imgBuoc3 =  (ImageView) findViewById(R.id.imgBuoc3);
         imgBuoc4 =  (ImageView) findViewById(R.id.imgBuoc4);
         imgThanhPham =  (ImageView) findViewById(R.id.imgThanhPham);
-
     }
 }

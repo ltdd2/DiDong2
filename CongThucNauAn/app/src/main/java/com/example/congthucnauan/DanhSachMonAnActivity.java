@@ -24,7 +24,6 @@ public class DanhSachMonAnActivity extends AppCompatActivity {
     MonAnAdapter monAnAdapter;
     ArrayList<MonAn> monAns;
     RecyclerView reDSMonAn;
-    Database database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +48,11 @@ public class DanhSachMonAnActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         reDSMonAn.setLayoutManager(linearLayoutManager);
         monAns = new ArrayList<>();
-        /*for (int i = 0; i < DuLieuMonAn.imgHinh.length; i++) {
-            monAns.add(new MonAn(DuLieuMonAn.imgHinh[i], DuLieuMonAn.txtTenMonAn[i],DuLieuMonAn.txtMoTaMonAn[i]));
-        }*/
-        Cursor cursor = ManHinhChaoActivity.database.GetData("SELECT * FROM MonAn WHERE IdDanhMuc = '"+id+"'");
+        Cursor cursor = TrangChuActivity.database.GetData("SELECT * FROM MonAn WHERE IdDanhMuc = '"+id+"'");
         while (cursor.moveToNext()){
             String ten = cursor.getString(1);
             String mota = cursor.getString(2);
-            String hinh = cursor.getString(10);
+            String hinh = cursor.getString(14);
             monAns.add(new MonAn(hinh,ten,mota));
         }
         monAnAdapter = new MonAnAdapter(monAns,this);

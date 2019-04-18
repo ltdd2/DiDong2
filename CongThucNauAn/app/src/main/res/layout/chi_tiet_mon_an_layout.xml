@@ -54,7 +54,7 @@
                 android:layout_below="@id/txtTenMon"
                 android:scaleType="fitStart"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/goimuc" />
+                android:src="@drawable/bunbohue" />
             <TextView
                 android:id="@+id/txtCachLam"
                 android:layout_below="@id/imgMonAn"
@@ -88,7 +88,7 @@
                 android:layout_height="100dp"
                 android:scaleType="fitStart"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/goimuc"/>
+                android:src="@drawable/bunbohue"/>
             <TextView
                 android:id="@+id/txtCTCL2"
                 android:layout_below="@id/imgBuoc1"
@@ -112,7 +112,7 @@
                 android:layout_height="100dp"
                 android:scaleType="fitStart"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/goimuc"/>
+                android:src="@drawable/bunbohue"/>
 
             <TextView
                 android:id="@+id/txtCTCL3"
@@ -137,7 +137,7 @@
                 android:layout_height="100dp"
                 android:scaleType="fitStart"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/goimuc"/>
+                android:src="@drawable/bunbohue"/>
 
             <TextView
                 android:id="@+id/txtCTCL4"
@@ -162,7 +162,7 @@
                 android:layout_height="100dp"
                 android:scaleType="fitStart"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/goimuc"/>
+                android:src="@drawable/bunbohue"/>
 
             <TextView
                 android:id="@+id/txtCTCL5"
@@ -187,7 +187,7 @@
                 android:layout_height="100dp"
                 android:scaleType="fitStart"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/goimuc"/>
+                android:src="@drawable/bunbohue"/>
         </RelativeLayout>
     </ScrollView>
 

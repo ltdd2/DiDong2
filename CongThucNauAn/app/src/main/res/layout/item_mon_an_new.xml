@@ -26,7 +26,7 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_marginTop="10dp"
                 android:id="@+id/imgHinhMonAn"
-                android:src="@drawable/goicatre"
+                android:src="@drawable/bunbohue"
                 android:layout_width="100dp"
                 android:layout_height="100dp" />
             <TextView

@@ -48,10 +48,7 @@ public class ManHinhVideoActivity extends AppCompatActivity {
         //Anhs xạ
         reVideo = (RecyclerView) findViewById(R.id.reVideo);
         videos = new ArrayList<>();
-        /*for(int i = 0 ; i<DuLieuVideo.imgHinhVideo.length;i++){
-            videos.add(new Video(DuLieuVideo.txtTenVideo[i],DuLieuVideo.imgHinhVideo[i],DuLieuVideo.idVideo[i]));
-        }*/
-        Cursor video = ManHinhChaoActivity.database.GetData("SELECT * FROM Video");
+        Cursor video = TrangChuActivity.database.GetData("SELECT * FROM Video");
         while (video.moveToNext()){
             String ten = video.getString(1);
             String hinh = video.getString(2);

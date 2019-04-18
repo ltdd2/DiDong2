@@ -19,14 +19,15 @@ import com.example.congthucnauan.R;
 import com.example.congthucnauan.models.MonAn;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
  public class MonAnNewAdapter extends RecyclerView.Adapter<MonAnNewAdapter.ViewHolder> {
-    ArrayList<MonAn> monAns;
+    List<MonAn> monAns;
     Context context;
 
-    public MonAnNewAdapter(ArrayList<MonAn> monAns, Context context) {
+    public MonAnNewAdapter(List<MonAn> monAns, Context context) {
         this.monAns = monAns;
         this.context = context;
     }

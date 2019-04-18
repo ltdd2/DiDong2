@@ -11,7 +11,6 @@ import com.example.congthucnauan.database.Database;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ManHinhChaoActivity extends AppCompatActivity {
-    public static Database database;
     CircleImageView imgIcon;
 
     @Override
@@ -37,11 +36,5 @@ public class ManHinhChaoActivity extends AppCompatActivity {
         imgIcon = (CircleImageView) findViewById(R.id.icon);
         Animation animation = AnimationUtils.loadAnimation(this,R.anim.xoay);
         imgIcon.startAnimation(animation);
-        //DATABASE
-        database = new Database(this, "CongThucNauAn.sqlite", null, 1);
-        //Tạo bảng MonAn
-        database.QueryData("CREATE TABLE IF NOT EXISTS MonAn(Id INTEGER PRIMARY KEY AUTOINCREMENT, TenMonAn VARCHAR(100), MoTa TEXT, IdDanhMuc INTEGER,NguyenLieu TEXT,Buoc1 TEXT,Buoc2 TEXT,Buoc3 TEXT, Buoc4 TEXT, ThanhPham TEXT,Hinh VARCHAR(20),Hinh1 VARCHAR(20),Hinh2 VARCHAR(20),Hinh3 VARCHAR(20),Hinh4 VARCHAR(20),Hinh5 VARCHAR(20))");
-        database.QueryData("CREATE TABLE IF NOT EXISTS Video(Id INTEGER PRIMARY KEY AUTOINCREMENT,TenVideo VARCHAR(50),Hinh VARCHAR(50), TenKhongDau VARCHAR(50))");
-
     }
 }

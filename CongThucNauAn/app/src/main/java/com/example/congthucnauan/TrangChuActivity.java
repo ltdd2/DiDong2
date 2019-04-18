@@ -1,6 +1,7 @@
 package com.example.congthucnauan;
 
 
+
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -19,9 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.example.congthucnauan.adapter.MonAnNewAdapter;
@@ -31,8 +30,8 @@ import com.example.congthucnauan.database.Database;
 import com.example.congthucnauan.models.MonAn;
 import com.example.congthucnauan.models.QuanAn;
 import com.example.congthucnauan.models.Video;
-
 import java.util.ArrayList;
+import java.util.List;
 
 public class TrangChuActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
@@ -43,15 +42,19 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
     QuanAnAdapter quanAnAdapter;
     VideoAdapter videoAdapter;
     ArrayList<QuanAn> quanAns;
-    ArrayList<MonAn> monAns;
+    List<MonAn> monAns;
     ArrayList<Video> videos;
     ViewFlipper viewFlipper;
     Animation in ,out;
     ArrayList<String> hinh;
+    public static Database database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trang_chu_layout);
+        //Database
+        database = new Database(this);
+        database.createDatabase();
         //Toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -61,9 +64,9 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
         navigationView.setNavigationItemSelectedListener(this);
         //Chuyển hình
         hinh = new ArrayList<>();
-        Cursor  dt = ManHinhChaoActivity.database.GetData("SELECT * FROM MonAn");
-        while (dt.moveToNext()){
-            String img = dt.getString(10);
+        Cursor cursor = database.GetData("SELECT * FROM MonAn");
+        while (cursor.moveToNext()){
+            String img = cursor.getString(14);
             hinh.add(img);
         }
         viewFlipper = findViewById(R.id.viewFliper);
@@ -89,16 +92,15 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
         reMonAn = (RecyclerView) findViewById(R.id.reMonAn);
         reMonAn.setLayoutManager(new GridLayoutManager(this,2));
         monAns = new ArrayList<MonAn>();
-      /* for (int i = 0 ; i< DuLieuMonAn.imgHinh.length; i++){
-           monAns.add(new MonAn(DuLieuMonAn.imgHinh[i],DuLieuMonAn.txtTenMonAn[i],DuLieuMonAn.txtMoTaMonAn[i]));
-       }*/
-       Cursor  data = ManHinhChaoActivity.database.GetData("SELECT * FROM MonAn");
-       while (data.moveToNext()){
-           String ten = data.getString(1);
-           String mota = data.getString(2);
-           String hinh = data.getString(10);
+        //Get data
+        Cursor monan = database.GetData("SELECT * FROM MonAn");
+        while (monan.moveToNext()){
+            String ten = monan.getString(1);
+            String mota = monan.getString(2);
+            String hinh = monan.getString(14);
            monAns.add(new MonAn(hinh,ten,mota));
-       }
+        }
+
         monAnAdapter = new MonAnNewAdapter(monAns,this);
         monAnAdapter.notifyDataSetChanged();
         reMonAn.setAdapter(monAnAdapter);
@@ -110,8 +112,12 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         reQuanAn.setLayoutManager(linearLayoutManager);
         quanAns = new ArrayList<>();
-        for(int i = 0; i< DuLieuQuanAn.imgHinhQuanAn.length;i++){
-            quanAns.add(new QuanAn(DuLieuQuanAn.imgHinhQuanAn[i],DuLieuQuanAn.txtTenQuanAn[i],DuLieuQuanAn.txtDiaChi[i]));
+        Cursor qAn = TrangChuActivity.database.GetData("SELECT * FROM QuanAn");
+        while (qAn.moveToNext()){
+            String ten = qAn.getString(1);
+            String hinh = qAn.getString(2);
+            String diachi  = qAn.getString(6);
+            quanAns.add(new QuanAn(hinh,ten,diachi));
         }
         quanAnAdapter =  new QuanAnAdapter(quanAns,this);
         reQuanAn.setAdapter(quanAnAdapter);
@@ -119,18 +125,13 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
         //video
         reVideo = (RecyclerView) findViewById(R.id.reVideo);
         videos = new ArrayList<>();
-        Cursor v = ManHinhChaoActivity.database.GetData("SELECT * FROM Video");
+        Cursor v = TrangChuActivity.database.GetData("SELECT * FROM Video");
         while (v.moveToNext()){
             String ten = v.getString(1);
             String hinh = v.getString(2);
             String tenkd  = v.getString(3);
             videos.add(new Video(ten,hinh,tenkd));
-            Toast.makeText(this,ten.toString(),Toast.LENGTH_SHORT).show();
         }
-
-        /*for(int i = 0 ; i<DuLieuVideo.imgHinhVideo.length;i++){
-            videos.add(new Video(DuLieuVideo.txtTenVideo[i],DuLieuVideo.imgHinhVideo[i],DuLieuVideo.idVideo[i]));
-        }*/
         videoAdapter = new VideoAdapter(videos,this);
         reVideo.setLayoutManager(new GridLayoutManager(this,2));
         reVideo.setAdapter(videoAdapter);
@@ -208,7 +209,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
                 finish();
                 break;
         }
-
         return true;
     }
+
 }

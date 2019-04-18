@@ -13,4 +13,106 @@
         android:background="#555555"
         app:titleTextColor="#fff">
     </android.support.v7.widget.Toolbar>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtQuanAn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TÊN QUÁN ĂN"
+                android:textColor="#ff00"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/txtDChi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa Chỉ"
+                    android:textColor="#4F4F4F"
+                    android:textSize="20sp"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp"/>
+            <TextView
+                android:layout_gravity="center"
+                android:id="@+id/txtChiDuong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chỉ Đường"
+                android:textColor="#0000EE"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/txtGioMCua"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giờ Mở Cửa"
+                android:textColor="#CD853F"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/txtGiaBan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gía Bán"
+                android:textColor="#B22222
+"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"/>
+            <TextView
+                android:id="@+id/txtMota1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mô tả"
+                android:layout_marginBottom="5dp"/>
+            <ImageView
+                android:id="@+id/hinh"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/bunbohue"/>
+            <TextView
+                android:id="@+id/txtMota2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mô tả"
+                android:layout_marginBottom="5dp"/>
+            <ImageView
+                android:id="@+id/hinh1"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/bunbohue"/>
+            <TextView
+                android:id="@+id/txtMota3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mô tả"
+                android:layout_marginBottom="5dp"/>
+            <ImageView
+                android:id="@+id/hinh2"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/bunbohue"/>
+            <TextView
+                android:id="@+id/txtMota4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mô tả"
+                android:layout_marginBottom="5dp"/>
+            <ImageView
+                android:id="@+id/hinh3"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/bunbohue"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

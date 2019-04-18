@@ -1,6 +1,7 @@
 package com.example.congthucnauan;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -42,11 +43,14 @@ public class QuanAnActivity extends AppCompatActivity {
         //Recycle quan an
         reQuanAn = (RecyclerView) findViewById(R.id.reQuanAna);
         reQuanAn.setHasFixedSize(true);
-        //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
         reQuanAn.setLayoutManager(new GridLayoutManager(this,2));
         quanAns = new ArrayList<>();
-        for(int i = 0; i< DuLieuQuanAn.imgHinhQuanAn.length;i++){
-            quanAns.add(new QuanAn(DuLieuQuanAn.imgHinhQuanAn[i],DuLieuQuanAn.txtTenQuanAn[i],DuLieuQuanAn.txtDiaChi[i]));
+        Cursor qAn = TrangChuActivity.database.GetData("SELECT * FROM QuanAn");
+        while (qAn.moveToNext()){
+            String ten = qAn.getString(1);
+            String hinh = qAn.getString(2);
+            String diachi  = qAn.getString(6);
+            quanAns.add(new QuanAn(hinh,ten,diachi));
         }
         dsQuanAnAdapter =  new DSQuanAnAdapter(quanAns,this);
         reQuanAn.setAdapter(dsQuanAnAdapter);
