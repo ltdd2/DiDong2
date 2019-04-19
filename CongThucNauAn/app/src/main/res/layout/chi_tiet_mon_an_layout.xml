@@ -22,6 +22,7 @@
             android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/txtTenMon"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tên Món Ăn"
@@ -29,11 +30,18 @@
                 android:layout_marginBottom="20dp"
                 android:textSize="35dp"
                 android:textStyle="bold" />
+            <ImageView
+                android:id="@+id/imgMonAn"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/txtTenMon"
+                android:scaleType="fitXY"
+                android:src="@drawable/thitkho" />
             <TextView
                 android:id="@+id/txtNgLieu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/txtTenMon"
+                android:layout_below="@id/imgMonAn"
                 android:text="Nguyên liệu"
                 android:textColor="#000"
                 android:textStyle="bold"
@@ -47,17 +55,10 @@
                 android:textSize="@dimen/sixetext2"
                 android:textColor="#000"
                 android:text="-thịt, cá, rau củ" />
-            <ImageView
-                android:id="@+id/imgMonAn"
-                android:layout_width="202dp"
-                android:layout_height="200dp"
-                android:layout_below="@id/txtTenMon"
-                android:scaleType="fitStart"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/bunbohue" />
+
             <TextView
                 android:id="@+id/txtCachLam"
-                android:layout_below="@id/imgMonAn"
+                android:layout_below="@id/txtNguyenLieu"
                 android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,7 +89,7 @@
                 android:layout_height="100dp"
                 android:scaleType="fitStart"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/bunbohue"/>
+                android:src="@drawable/thitkho"/>
             <TextView
                 android:id="@+id/txtCTCL2"
                 android:layout_below="@id/imgBuoc1"
@@ -112,7 +113,7 @@
                 android:layout_height="100dp"
                 android:scaleType="fitStart"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/bunbohue"/>
+                android:src="@drawable/thitkho"/>
 
             <TextView
                 android:id="@+id/txtCTCL3"
@@ -137,7 +138,7 @@
                 android:layout_height="100dp"
                 android:scaleType="fitStart"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/bunbohue"/>
+                android:src="@drawable/thitkho"/>
 
             <TextView
                 android:id="@+id/txtCTCL4"
@@ -162,7 +163,7 @@
                 android:layout_height="100dp"
                 android:scaleType="fitStart"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/bunbohue"/>
+                android:src="@drawable/thitkho"/>
 
             <TextView
                 android:id="@+id/txtCTCL5"
@@ -187,7 +188,7 @@
                 android:layout_height="100dp"
                 android:scaleType="fitStart"
                 android:layout_marginTop="4dp"
-                android:src="@drawable/bunbohue"/>
+                android:src="@drawable/thitkho"/>
         </RelativeLayout>
     </ScrollView>
 

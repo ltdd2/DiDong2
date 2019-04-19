@@ -72,8 +72,9 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
         viewFlipper = findViewById(R.id.viewFliper);
         for ( int i = 0; i<hinh.size();i++){
             ImageView img = new ImageView(this);
-            Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh.get(i));
-            img.setImageURI(imgUri);
+           // Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh.get(i));
+            //img.setImageURI(imgUri);
+            img.setImageBitmap(database.getBitmapFromAssets(hinh.get(i).toString()));
             img.setScaleType(ImageView.ScaleType.FIT_XY);
             viewFlipper.addView(img);
         }
@@ -100,7 +101,6 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
             String hinh = monan.getString(14);
            monAns.add(new MonAn(hinh,ten,mota));
         }
-
         monAnAdapter = new MonAnNewAdapter(monAns,this);
         monAnAdapter.notifyDataSetChanged();
         reMonAn.setAdapter(monAnAdapter);

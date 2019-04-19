@@ -37,7 +37,7 @@
                     android:layout_height="wrap_content"
                     android:text="Địa Chỉ"
                     android:textColor="#4F4F4F"
-                    android:textSize="20sp"
+                    android:textSize="10sp"
                     android:gravity="center"
                     android:layout_marginBottom="10dp"/>
             <TextView
@@ -45,7 +45,7 @@
                 android:id="@+id/txtChiDuong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chỉ Đường"
+                android:text="Xem Vị Trí"
                 android:textColor="#0000EE"
                 android:textSize="20sp"
                 android:gravity="center"

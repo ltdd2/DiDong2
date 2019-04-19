@@ -51,10 +51,6 @@ public class ReviewQuanAnActivity extends AppCompatActivity {
             String giaban =  cursor.getString(8);
             final String vTri1 =  cursor.getString(13);
             final String vTri2 =  cursor.getString(14);
-            Uri img = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh);
-            Uri img2 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh1);
-            Uri img3 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh2);
-            Uri img4 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh3);
             txtTenQuan.setText(ten);
             txtGioMCua.setText(giomocua);
             txtDiaChi.setText(diachi);
@@ -63,10 +59,11 @@ public class ReviewQuanAnActivity extends AppCompatActivity {
             txtMoTa2.setText(mota2);
             txtMoTa3.setText(mota3);
             txtMoTa4.setText(mota4);
-            imgHinh.setImageURI(img);
-            imgHinh1.setImageURI(img2);
-            imgHinh2.setImageURI(img3);
-            imgHinh3.setImageURI(img4);
+
+            imgHinh.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh));
+            imgHinh1.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh1));
+            imgHinh2.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh2));
+            imgHinh3.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh3));
             txtChiDuong.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

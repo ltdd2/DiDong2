@@ -16,6 +16,8 @@ import android.widget.Toast;
 
 import com.example.congthucnauan.ChiTietMonAnActivity;
 import com.example.congthucnauan.R;
+import com.example.congthucnauan.TrangChuActivity;
+import com.example.congthucnauan.database.Database;
 import com.example.congthucnauan.models.MonAn;
 
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
  public class MonAnNewAdapter extends RecyclerView.Adapter<MonAnNewAdapter.ViewHolder> {
     List<MonAn> monAns;
     Context context;
+
 
     public MonAnNewAdapter(List<MonAn> monAns, Context context) {
         this.monAns = monAns;
@@ -41,8 +44,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan/" + "drawable/" + monAns.get(i).getImgHinhMonAn());
-        viewHolder.imgHinhMonAn.setImageURI(imgUri);
+       // Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan/" + "drawable/" + monAns.get(i).getImgHinhMonAn());
+       // viewHolder.imgHinhMonAn.setImageURI(imgUri);
+        viewHolder.imgHinhMonAn.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(monAns.get(i).getImgHinhMonAn()));
         viewHolder.txtTenMonAn.setText(monAns.get(i).getTxtTenMonAn());
         viewHolder.txtMoTaMonAn.setText(monAns.get(i).getTxtMoTaMonAn());
     }

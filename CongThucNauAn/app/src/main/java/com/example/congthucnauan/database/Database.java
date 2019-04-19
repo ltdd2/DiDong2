@@ -1,9 +1,12 @@
 package com.example.congthucnauan.database;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -11,6 +14,7 @@ import com.example.congthucnauan.BuildConfig;
 import com.example.congthucnauan.models.MonAn;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -90,19 +94,17 @@ public class Database extends SQLiteOpenHelper {
             e.printStackTrace();
         }
     }
-    public List<MonAn> getMonAn() {
-        MonAn monAn = null;
-        List<MonAn> monAns = new ArrayList<>();
-        openDatabase();
-       Cursor cursor = sqLiteDatabase.rawQuery("select * from MonAn", null);
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            monAn = new MonAn(cursor.getString(10),cursor.getString(1),cursor.getString(2));
-            monAns.add(monAn);
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return monAns;
-    }
+    //Get ảnh từ asset vào bitmap
+    public Bitmap getBitmapFromAssets(String fileName){
+        AssetManager am = context.getAssets();
+        InputStream is = null;
+        try{
 
+            is = am.open(fileName);
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        Bitmap bitmap = BitmapFactory.decodeStream(is);
+        return bitmap;
+    }
 }

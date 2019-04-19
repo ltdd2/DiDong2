@@ -57,18 +57,13 @@ ImageView imgMonAn,imgBuoc1,imgBuoc2,imgBuoc3,imgBuoc4,imgThanhPham;
             txtBuoc3.setText(b3.toString());
             txtBuoc4.setText(b4.toString());
             txtThanhPham.setText(thanhpham.toString());
-            Uri img = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh);
-            Uri img1 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh1);
-            Uri img2 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh2);
-            Uri img3 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh3);
-            Uri img4 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh4);
-            Uri img5 = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh);
-            imgMonAn.setImageURI(img);
-            imgBuoc1.setImageURI(img1);
-            imgBuoc2.setImageURI(img2);
-            imgBuoc3.setImageURI(img3);
-            imgBuoc4.setImageURI(img4);
-            imgThanhPham.setImageURI(img5);
+            imgMonAn.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh));
+            imgBuoc1.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh1));
+            imgBuoc2.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh2));
+            imgBuoc3.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh3));
+            imgBuoc4.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh4));
+            imgThanhPham.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh));
+
         }
     }
 

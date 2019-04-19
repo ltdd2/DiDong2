@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.congthucnauan.ChiTietMonAnActivity;
 import com.example.congthucnauan.R;
+import com.example.congthucnauan.TrangChuActivity;
 import com.example.congthucnauan.models.MonAn;
 
 import java.util.ArrayList;
@@ -40,8 +41,8 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.ViewHolder> 
    }
    @Override
    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-       Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + monAns.get(i).getImgHinhMonAn());
-       viewHolder.imgHinhMonAn.setImageURI(imgUri);
+      // Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + monAns.get(i).getImgHinhMonAn());
+       viewHolder.imgHinhMonAn.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(monAns.get(i).getImgHinhMonAn()));
        viewHolder.txtTenMonAn.setText(monAns.get(i).getTxtTenMonAn());
        viewHolder.txtMoTaMonAn.setText(monAns.get(i).getTxtMoTaMonAn());
    }

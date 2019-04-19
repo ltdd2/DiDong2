@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.congthucnauan.PlayVideoActivity;
 import com.example.congthucnauan.R;
+import com.example.congthucnauan.TrangChuActivity;
 import com.example.congthucnauan.models.Video;
 
 import java.util.ArrayList;
@@ -36,8 +37,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + videos.get(i).getImgHinhVideo());
-        viewHolder.imgHinhVideo.setImageURI(imgUri);
+      //  Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + videos.get(i).getImgHinhVideo());
+        viewHolder.imgHinhVideo.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(videos.get(i).getImgHinhVideo()));
         viewHolder.txtTenVideo.setText(videos.get(i).getTenVideo());
         viewHolder.idVideo.setText(videos.get(i).getIdVideo());
     }

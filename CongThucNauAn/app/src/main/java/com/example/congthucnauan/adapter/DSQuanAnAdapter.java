@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.congthucnauan.R;
 import com.example.congthucnauan.ReviewQuanAnActivity;
+import com.example.congthucnauan.TrangChuActivity;
 import com.example.congthucnauan.models.QuanAn;
 
 import java.util.ArrayList;
@@ -37,8 +38,8 @@ public class DSQuanAnAdapter extends RecyclerView.Adapter<DSQuanAnAdapter.ViewHo
    }
    @Override
    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-       Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + quanAns.get(i).getImgHinhQuanAn());
-       viewHolder.imgHinhQuanAn.setImageURI(imgUri);
+      // Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + quanAns.get(i).getImgHinhQuanAn());
+       viewHolder.imgHinhQuanAn.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(quanAns.get(i).getImgHinhQuanAn()));
        viewHolder.txtTenQuanAn.setText(quanAns.get(i).getTxtTenQuanAn());
        viewHolder.txtDiaChi.setText(quanAns.get(i).getTxtDiaChi());
    }
