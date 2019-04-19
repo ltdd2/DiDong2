@@ -2,6 +2,7 @@ package com.example.congthucnauan;
 
 
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -17,10 +18,17 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.example.congthucnauan.adapter.MonAnNewAdapter;
@@ -142,10 +150,49 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
         if(actionBarDrawerToggle.onOptionsItemSelected(item)){
             return true;
         }
-        return onOptionsItemSelected(item);
+        switch (item.getItemId()){
+            case R.id.mnuLogin:
+                DangNhap();
+                return true;
+                default:
+                    return onOptionsItemSelected(item);
+        }
     }
 
+    private void DangNhap() {
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_custom_layout);
+        dialog.setCanceledOnTouchOutside(false);
+        final EditText edtTenDN = dialog.findViewById(R.id.edtTenDangNhap);
+         final EditText edtMatKhau = dialog.findViewById(R.id.edtMatKhau);
+        Button  btnDangNhap = dialog.findViewById(R.id.btnDangNhap);
+        Button btnHuy = dialog.findViewById(R.id.btnHuy);
+        btnDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               if(edtTenDN.getText().toString().equals("van") && edtMatKhau.getText().toString().equals("123")){
+                   Toast.makeText(TrangChuActivity.this,"ok",Toast.LENGTH_SHORT).show();
+                   dialog.dismiss();
+               }else {
+                   Toast.makeText(TrangChuActivity.this,"Đăng Nhập Thất Bại",Toast.LENGTH_SHORT).show();
+               }
+            }
+        });
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.login,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){

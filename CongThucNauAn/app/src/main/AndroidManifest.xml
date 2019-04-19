@@ -13,7 +13,7 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/key_map"/>
-        <activity android:name=".TrangChuActivity">
+        <activity android:name=".ManHinhChaoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".PlayVideoActivity"></activity>
         <activity android:name=".ChiTietMonAnActivity" />
-        <activity android:name=".ManHinhChaoActivity" />
+        <activity android:name=".TrangChuActivity" />
         <activity android:name=".ReviewQuanAnActivity" />
         <activity android:name=".DanhSachMonAnActivity" />
         <activity android:name=".QuanAnActivity" />
