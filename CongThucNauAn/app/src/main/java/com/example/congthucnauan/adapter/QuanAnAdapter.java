@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.congthucnauan.R;
 import com.example.congthucnauan.ReviewQuanAnActivity;
@@ -63,6 +64,17 @@ public class QuanAnAdapter extends RecyclerView.Adapter<QuanAnAdapter.ViewHolder
                    Intent intent = new Intent(context, ReviewQuanAnActivity.class);
                    intent.putExtra("Key",txtTenQuanAn.getText());
                    context.startActivity(intent);
+               }
+           });
+           itemView.setOnLongClickListener(new View.OnLongClickListener() {
+               @Override
+               public boolean onLongClick(View v) {
+                   if(TrangChuActivity.KiemTra == false){
+                       Toast.makeText(context,"Ban Chua Dang Nhap", Toast.LENGTH_SHORT).show();
+                   }else{
+                       Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show();
+                   }
+                   return true;
                }
            });
        }

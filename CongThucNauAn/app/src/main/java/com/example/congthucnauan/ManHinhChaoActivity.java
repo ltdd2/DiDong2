@@ -27,7 +27,7 @@ public class ManHinhChaoActivity extends AppCompatActivity {
                 } finally {
                     Intent i = new Intent(ManHinhChaoActivity.this, TrangChuActivity.class);
                     startActivity(i);
-
+                    finish();
                 }
             }
         });

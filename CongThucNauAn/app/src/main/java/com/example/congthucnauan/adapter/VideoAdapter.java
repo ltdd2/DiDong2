@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.congthucnauan.PlayVideoActivity;
 import com.example.congthucnauan.R;
 import com.example.congthucnauan.TrangChuActivity;
@@ -37,7 +39,6 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-      //  Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + videos.get(i).getImgHinhVideo());
         viewHolder.imgHinhVideo.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(videos.get(i).getImgHinhVideo()));
         viewHolder.txtTenVideo.setText(videos.get(i).getTenVideo());
         viewHolder.idVideo.setText(videos.get(i).getIdVideo());
@@ -63,6 +64,17 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                     i.putExtra("Key",txtTenVideo.getText().toString());
                     i.putExtra("Id",idVideo.getText().toString());
                     context.startActivity(i);
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    if(TrangChuActivity.KiemTra == false){
+                        Toast.makeText(context,"Ban Chua Dang Nhap", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show();
+                    }
+                    return true;
                 }
             });
         }

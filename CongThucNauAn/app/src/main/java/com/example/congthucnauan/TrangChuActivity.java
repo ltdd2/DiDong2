@@ -28,6 +28,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
@@ -56,6 +57,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
     Animation in ,out;
     ArrayList<String> hinh;
     public static Database database;
+    public static boolean KiemTra = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,8 +82,6 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
         viewFlipper = findViewById(R.id.viewFliper);
         for ( int i = 0; i<hinh.size();i++){
             ImageView img = new ImageView(this);
-           // Uri imgUri = Uri.parse("android.resource://com.example.congthucnauan" + "/drawable/" + hinh.get(i));
-            //img.setImageURI(imgUri);
             img.setImageBitmap(database.getBitmapFromAssets(hinh.get(i).toString()));
             img.setScaleType(ImageView.ScaleType.FIT_XY);
             viewFlipper.addView(img);
@@ -162,21 +162,34 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
     private void DangNhap() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_custom_layout);
+        dialog.setContentView(R.layout.dialog_dang_nhap_layout);
         dialog.setCanceledOnTouchOutside(false);
         final EditText edtTenDN = dialog.findViewById(R.id.edtTenDangNhap);
-         final EditText edtMatKhau = dialog.findViewById(R.id.edtMatKhau);
-        Button  btnDangNhap = dialog.findViewById(R.id.btnDangNhap);
-        Button btnHuy = dialog.findViewById(R.id.btnHuy);
+        final EditText edtMatKhau = dialog.findViewById(R.id.edtMatKhau);
+        final Button  btnDangNhap = dialog.findViewById(R.id.btnDangNhap);
+        final Button btnHuy = dialog.findViewById(R.id.btnHuy);
+        final Button btnDangXuat = dialog.findViewById(R.id.btnDangXuat);
+        final TextView txtDangNhap = dialog.findViewById(R.id.txtDangNhap);
+        final Button btnThoat = dialog.findViewById(R.id.btnThoat);
+        if (KiemTra == true) {
+            btnDangNhap.setVisibility(View.GONE);
+            btnHuy.setVisibility(View.GONE);
+            btnDangXuat.setVisibility(View.VISIBLE);
+            edtMatKhau.setVisibility(View.GONE);
+            edtTenDN.setVisibility(View.GONE);
+            btnThoat.setVisibility(View.VISIBLE);
+            txtDangNhap.setText("Xin Chào : Do Minh Van");
+        }
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if(edtTenDN.getText().toString().equals("van") && edtMatKhau.getText().toString().equals("123")){
-                   Toast.makeText(TrangChuActivity.this,"ok",Toast.LENGTH_SHORT).show();
-                   dialog.dismiss();
-               }else {
-                   Toast.makeText(TrangChuActivity.this,"Đăng Nhập Thất Bại",Toast.LENGTH_SHORT).show();
-               }
+                if(edtTenDN.getText().toString().equals("van") && edtMatKhau.getText().toString().equals("123")){
+                    Toast.makeText(TrangChuActivity.this,"ok",Toast.LENGTH_SHORT).show();
+                    KiemTra = true;
+                    dialog.dismiss();
+                }else {
+                    Toast.makeText(TrangChuActivity.this,"Đăng Nhập Thất Bại",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         btnHuy.setOnClickListener(new View.OnClickListener() {
@@ -185,7 +198,49 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
                 dialog.dismiss();
             }
         });
+        btnDangXuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                KiemTra = false;
+                btnDangXuat.setVisibility(View.GONE);
+                btnDangNhap.setVisibility(View.VISIBLE);
+                btnHuy.setVisibility(View.VISIBLE);
+                edtMatKhau.setVisibility(View.VISIBLE);
+                edtTenDN.setVisibility(View.VISIBLE);
+                txtDangNhap.setText("ĐĂNG NHẬP");
+                btnThoat.setVisibility(View.GONE);
+            }
+        });
+        btnThoat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
         dialog.show();
+    }
+    private void DangXuat(){
+        final Dialog dlog = new Dialog(this);
+        dlog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dlog.setContentView(R.layout.dialog_dang_xuat_layout);
+        dlog.setCanceledOnTouchOutside(false);
+        final Button  btnYes = dlog.findViewById(R.id.btnYes);
+        final Button btnNo = dlog.findViewById(R.id.btnNo);
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Toast.makeText(TrangChuActivity.this, "Yes", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(TrangChuActivity.this, "No", Toast.LENGTH_SHORT).show();
+                dlog.dismiss();
+            }
+        });
+        dlog.show();
     }
 
     @Override
@@ -253,7 +308,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
                 drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             case R.id.thoat:
-                finish();
+                DangXuat();
                 break;
         }
         return true;

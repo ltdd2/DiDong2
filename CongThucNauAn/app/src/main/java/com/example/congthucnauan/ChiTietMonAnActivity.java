@@ -2,17 +2,12 @@ package com.example.congthucnauan;
 
 import android.content.Intent;
 import android.database.Cursor;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.congthucnauan.models.MonAn;
-
 public class ChiTietMonAnActivity extends AppCompatActivity {
 Toolbar toolbarChiTiet;
 TextView txtMonAn,txtNguyenLieu,txtBuoc1,txtBuoc2,txtBuoc3,txtBuoc4,txtThanhPham;

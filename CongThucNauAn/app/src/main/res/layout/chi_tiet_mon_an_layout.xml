@@ -85,9 +85,11 @@
             <ImageView
                 android:id="@+id/imgBuoc1"
                 android:layout_below="@id/txtBuoc1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_height="100dp"
-                android:scaleType="fitStart"
+                android:scaleType="fitXY"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/thitkho"/>
             <TextView
@@ -109,9 +111,11 @@
             <ImageView
                 android:id="@+id/imgBuoc2"
                 android:layout_below="@id/txtBuoc2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_height="100dp"
-                android:scaleType="fitStart"
+                android:scaleType="fitXY"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/thitkho"/>
 
@@ -134,9 +138,11 @@
             <ImageView
                 android:id="@+id/imgBuoc3"
                 android:layout_below="@id/txtBuoc3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_height="100dp"
-                android:scaleType="fitStart"
+                android:scaleType="fitXY"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/thitkho"/>
 
@@ -159,9 +165,11 @@
             <ImageView
                 android:id="@+id/imgBuoc4"
                 android:layout_below="@id/txtBuoc4"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_height="100dp"
-                android:scaleType="fitStart"
+                android:scaleType="fitXY"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/thitkho"/>
 
@@ -184,9 +192,11 @@
             <ImageView
                 android:id="@+id/imgThanhPham"
                 android:layout_below="@id/txtThanhPham"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
                 android:layout_height="100dp"
-                android:scaleType="fitStart"
+                android:scaleType="fitXY"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/thitkho"/>
         </RelativeLayout>
