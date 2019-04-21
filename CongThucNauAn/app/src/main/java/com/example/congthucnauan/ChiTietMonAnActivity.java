@@ -6,12 +6,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ViewFlipper;
+
+import java.util.ArrayList;
+
 public class ChiTietMonAnActivity extends AppCompatActivity {
 Toolbar toolbarChiTiet;
 TextView txtMonAn,txtNguyenLieu,txtBuoc1,txtBuoc2,txtBuoc3,txtBuoc4,txtThanhPham;
-ImageView imgMonAn,imgBuoc1,imgBuoc2,imgBuoc3,imgBuoc4,imgThanhPham;
+ImageView imgBuoc1,imgBuoc2,imgBuoc3,imgBuoc4,imgThanhPham;
+ArrayList<String> hinhViewflipper = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,15 +60,32 @@ ImageView imgMonAn,imgBuoc1,imgBuoc2,imgBuoc3,imgBuoc4,imgThanhPham;
             txtBuoc3.setText(b3.toString());
             txtBuoc4.setText(b4.toString());
             txtThanhPham.setText(thanhpham.toString());
-            imgMonAn.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh));
             imgBuoc1.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh1));
             imgBuoc2.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh2));
             imgBuoc3.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh3));
             imgBuoc4.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh4));
             imgThanhPham.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinh));
-
+            hinhViewflipper.add(hinh1);
+            hinhViewflipper.add(hinh2);
+            hinhViewflipper.add(hinh3);
+            hinhViewflipper.add(hinh4);
+            hinhViewflipper.add(hinh);
+        }
+       ViewFlipper viewFlipper = findViewById(R.id.viewFliperChiTiet);
+       Animation in = AnimationUtils.loadAnimation(this,R.anim.in_chitiet);
+       Animation out = AnimationUtils.loadAnimation(this,R.anim.out_chitiet);
+        viewFlipper.setInAnimation(in);
+        viewFlipper.setOutAnimation(out);
+        viewFlipper.setFlipInterval(3000);
+        viewFlipper.setAutoStart(true);
+        for (int i = 0 ; i < hinhViewflipper.size(); i++){
+            ImageView img = new ImageView(this);
+            img.setImageBitmap(TrangChuActivity.database.getBitmapFromAssets(hinhViewflipper.get(i).toString()));
+            img.setScaleType(ImageView.ScaleType.FIT_XY);
+            viewFlipper.addView(img);
         }
     }
+
 
     private void AnhXa() {
         txtMonAn = (TextView) findViewById(R.id.txtTenMon);
@@ -70,7 +95,6 @@ ImageView imgMonAn,imgBuoc1,imgBuoc2,imgBuoc3,imgBuoc4,imgThanhPham;
         txtBuoc3 = (TextView) findViewById(R.id.txtBuoc3);
         txtBuoc4 = (TextView) findViewById(R.id.txtBuoc4);
         txtThanhPham =(TextView) findViewById(R.id.txtThanhPham);
-        imgMonAn =(ImageView) findViewById(R.id.imgMonAn);
         imgBuoc1 =  (ImageView) findViewById(R.id.imgBuoc1);
         imgBuoc2 =  (ImageView) findViewById(R.id.imgBuoc2);
         imgBuoc3 =  (ImageView) findViewById(R.id.imgBuoc3);
