@@ -13,7 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.example.congthucnauan.models.MonAn;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class ChiTietMonAnActivity extends AppCompatActivity {
 Toolbar toolbarChiTiet;

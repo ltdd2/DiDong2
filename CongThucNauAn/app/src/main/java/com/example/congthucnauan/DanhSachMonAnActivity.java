@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -18,8 +21,9 @@ import com.example.congthucnauan.database.Database;
 import com.example.congthucnauan.models.MonAn;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class DanhSachMonAnActivity extends AppCompatActivity {
+public class DanhSachMonAnActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     Toolbar toolbarDSMonAn;
     MonAnAdapter monAnAdapter;
     ArrayList<MonAn> monAns;
@@ -55,13 +59,44 @@ public class DanhSachMonAnActivity extends AppCompatActivity {
             String hinh = cursor.getString(14);
             monAns.add(new MonAn(hinh,ten,mota));
         }
+         UpdateAdapter(monAns);
+        reDSMonAn.setItemAnimator(new DefaultItemAnimator());
+    }
+    private void UpdateAdapter(List<MonAn> list){
         monAnAdapter = new MonAnAdapter(monAns,this);
         reDSMonAn.setAdapter(monAnAdapter);
-        reDSMonAn.setItemAnimator(new DefaultItemAnimator());
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search,menu);
+        MenuItem item = menu.findItem(R.id.searchView);
+        SearchView searchView = (SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(this);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        monAns = TimMonAnTheoTen(newText.toLowerCase());
+        UpdateAdapter(monAns);
+        monAnAdapter.notifyDataSetChanged();
+        return true;
+    }
+    private ArrayList<MonAn> TimMonAnTheoTen(String tenMonAn){
+        ArrayList<MonAn> list = new ArrayList<>();
+        Cursor cursor = TrangChuActivity.database.GetData("SELECT * FROM MonAn WHERE TenKhongDau LIKE '"+tenMonAn+"'");
+        while (cursor.moveToNext()){
+            String ten = cursor.getString(1);
+            String mota = cursor.getString(2);
+            String hinh = cursor.getString(14);
+            monAns.add(new MonAn(hinh,ten,mota));
+        }
+        return list;
     }
 }

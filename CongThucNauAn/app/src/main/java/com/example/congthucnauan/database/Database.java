@@ -107,4 +107,5 @@ public class Database extends SQLiteOpenHelper {
         Bitmap bitmap = BitmapFactory.decodeStream(is);
         return bitmap;
     }
+
 }
