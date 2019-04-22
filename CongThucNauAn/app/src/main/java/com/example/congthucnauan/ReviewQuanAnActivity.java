@@ -70,6 +70,7 @@ public class ReviewQuanAnActivity extends AppCompatActivity {
                     Intent i = new Intent(ReviewQuanAnActivity.this, BanDoActivity.class);
                     i.putExtra("ViTri1",vTri1);
                     i.putExtra("ViTri2",vTri2);
+                    i.putExtra("Ten",txtTenQuan.getText().toString());
                     startActivity(i);
                 }
             });

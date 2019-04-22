@@ -30,18 +30,18 @@
                 android:layout_marginBottom="20dp"
                 android:textSize="35dp"
                 android:textStyle="bold" />
-            <ImageView
-                android:id="@+id/imgMonAn"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
+            <ViewFlipper
                 android:layout_below="@id/txtTenMon"
-                android:scaleType="fitXY"
-                android:src="@drawable/thitkho" />
+                android:id="@+id/viewFliperChiTiet"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+            </ViewFlipper>
+
             <TextView
                 android:id="@+id/txtNgLieu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imgMonAn"
+                android:layout_below="@id/viewFliperChiTiet"
                 android:text="Nguyên liệu"
                 android:textColor="#000"
                 android:textStyle="bold"
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_height="100dp"
+                android:layout_height="200dp"
                 android:scaleType="fitXY"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/thitkho"/>
@@ -114,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_height="100dp"
+                android:layout_height="200dp"
                 android:scaleType="fitXY"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/thitkho"/>
@@ -141,7 +141,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_height="100dp"
+                android:layout_height="200dp"
                 android:scaleType="fitXY"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/thitkho"/>
@@ -168,7 +168,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_height="100dp"
+                android:layout_height="200dp"
                 android:scaleType="fitXY"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/thitkho"/>
@@ -195,7 +195,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_height="100dp"
+                android:layout_height="200dp"
                 android:scaleType="fitXY"
                 android:layout_marginTop="4dp"
                 android:src="@drawable/thitkho"/>

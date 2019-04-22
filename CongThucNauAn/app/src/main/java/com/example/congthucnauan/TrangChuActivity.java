@@ -58,6 +58,7 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
     ArrayList<String> hinh;
     public static Database database;
     public static boolean KiemTra = false;
+    Cursor c;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -171,6 +172,8 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
         final Button btnDangXuat = dialog.findViewById(R.id.btnDangXuat);
         final TextView txtDangNhap = dialog.findViewById(R.id.txtDangNhap);
         final Button btnThoat = dialog.findViewById(R.id.btnThoat);
+        //Database
+        c = database.GetData("SELECT *  FROM NguoiDung");
         if (KiemTra == true) {
             btnDangNhap.setVisibility(View.GONE);
             btnHuy.setVisibility(View.GONE);
@@ -178,17 +181,20 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
             edtMatKhau.setVisibility(View.GONE);
             edtTenDN.setVisibility(View.GONE);
             btnThoat.setVisibility(View.VISIBLE);
-            txtDangNhap.setText("Xin Chào : Do Minh Van");
+            txtDangNhap.setText("Xin Chao: Do Minh Van");
         }
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edtTenDN.getText().toString().equals("van") && edtMatKhau.getText().toString().equals("123")){
-                    Toast.makeText(TrangChuActivity.this,"ok",Toast.LENGTH_SHORT).show();
-                    KiemTra = true;
-                    dialog.dismiss();
-                }else {
-                    Toast.makeText(TrangChuActivity.this,"Đăng Nhập Thất Bại",Toast.LENGTH_SHORT).show();
+                    while (c.moveToNext()){
+                        if(edtTenDN.getText().toString().equals("van") && edtMatKhau.getText().toString().equals("123")){
+                            Toast.makeText(TrangChuActivity.this,"Dang Nhap Thanh Cong",Toast.LENGTH_SHORT).show();
+                            KiemTra = true;
+                            dialog.dismiss();
+                        }else {
+                            Toast.makeText(TrangChuActivity.this,"Đăng Nhập Thất Bại",Toast.LENGTH_SHORT).show();
+                        }
+
                 }
             }
         });
@@ -230,13 +236,12 @@ public class TrangChuActivity extends AppCompatActivity implements NavigationVie
             @Override
             public void onClick(View v) {
                 finish();
-                Toast.makeText(TrangChuActivity.this, "Yes", Toast.LENGTH_SHORT).show();
             }
         });
         btnNo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(TrangChuActivity.this, "No", Toast.LENGTH_SHORT).show();
+                Toast.makeText(TrangChuActivity.this, "Bạn Vẫn Ở Trang Này", Toast.LENGTH_SHORT).show();
                 dlog.dismiss();
             }
         });

@@ -16,11 +16,11 @@
     <EditText
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:drawableLeft="@drawable/admin"
         android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:gravity="center"
         android:background="@drawable/custom_edittext"
+        android:drawableLeft="@drawable/ic_user"
         android:id="@+id/edtTenDangNhap"
         android:layout_width="300dp"
         android:layout_height="40dp"
@@ -32,10 +32,12 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:background="@drawable/custom_edittext"
+        android:drawableLeft="@drawable/ic_pass"
         android:id="@+id/edtMatKhau"
         android:layout_width="300dp"
         android:layout_height="40dp"
-        android:hint="Nhập Tên Tài Khoản"/>
+        android:hint="Nhập Mật Khẩu"
+        android:password="true"/>
     <LinearLayout
         android:layout_marginTop="20dp"
         android:gravity="center"

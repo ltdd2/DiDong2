@@ -28,12 +28,13 @@ public class BanDoActivity extends AppCompatActivity implements OnMapReadyCallba
         Intent i = getIntent();
         String vt1 = i.getStringExtra("ViTri1");
         String vt2 = i.getStringExtra("ViTri2");
+        String ten = i.getStringExtra("Ten");
         if(mMaps != null){
             LatLng tdc = new LatLng(Double.parseDouble(vt1), Double.parseDouble(vt2));
             mMaps.addMarker(new MarkerOptions()
                     .position(tdc)
                     .draggable(true)
-                    .title("Trường Cao Đẳng Công Nghệ Thủ Đức")
+                    .title(ten)
                     .snippet("I am Here"));
             mMaps.moveCamera(CameraUpdateFactory.newLatLngZoom(tdc,15));
         }
