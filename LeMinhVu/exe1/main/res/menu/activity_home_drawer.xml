@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view"
+    >
+
+    <group android:checkableBehavior="single"
+        >
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_sanpham"
+            android:icon="@drawable/ic_sanpham1"
+            android:title="Sản phẩm" />
+        <item
+            android:id="@+id/nav_makeup"
+            android:icon="@drawable/ic_makeup"
+            android:title="Make up" />
+        <item
+            android:id="@+id/nav_tocdep"
+            android:icon="@drawable/ic_tocdep"
+            android:title="Tóc đẹp" />
+        <item
+            android:id="@+id/nav_macdep"
+            android:icon="@drawable/ic_macdep"
+            android:title="Mặc đẹp" />
+        <item
+            android:id="@+id/nav_dadep"
+            android:icon="@drawable/ic_dadep"
+            android:title="Da đẹp" />
+        <item
+            android:id="@+id/nav_dangdap"
+            android:icon="@drawable/ic_body"
+            android:title="Dáng đẹp" />
+        <item
+            android:id="@+id/nav_tapluyen"
+            android:icon="@drawable/ic_tapluyen"
+            android:title="Tập luyện" />
+    </group>
+
+</menu>
