@@ -48,7 +48,11 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
     public int getItemCount() {
         return videos.size();
     }
-
+    public void removeItem(int ViTri){
+        TrangChuActivity.database.QueryData("DELETE FROM Video WHERE Id ='"+(ViTri+1)+"'");
+        videos.remove(ViTri);
+        notifyItemRemoved(ViTri);
+    }
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imgHinhVideo;
         TextView  txtTenVideo,idVideo;
@@ -72,7 +76,8 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                     if(TrangChuActivity.KiemTra == false){
                         Toast.makeText(context,"Ban Chua Dang Nhap", Toast.LENGTH_SHORT).show();
                     }else{
-                        Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show();
+                        removeItem(getAdapterPosition());
+                        Toast.makeText(context, "Da Xoa", Toast.LENGTH_SHORT).show();
                     }
                     return true;
                 }

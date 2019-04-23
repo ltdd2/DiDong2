@@ -45,7 +45,11 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.ViewHolder> 
    public int getItemCount() {
        return monAns.size();
    }
-
+    public void removeItem(int ViTri){
+        TrangChuActivity.database.QueryData("DELETE FROM MonAn WHERE Id ='"+(ViTri+1)+"'");
+        monAns.remove(ViTri);
+        notifyItemRemoved(ViTri);
+    }
    public class ViewHolder extends RecyclerView.ViewHolder {
        CircleImageView imgHinhMonAn;
        TextView txtTenMonAn, txtMoTaMonAn;
@@ -71,7 +75,8 @@ public class MonAnAdapter extends RecyclerView.Adapter<MonAnAdapter.ViewHolder> 
                    if(TrangChuActivity.KiemTra == false){
                        Toast.makeText(context,"Ban Chua Dang Nhap", Toast.LENGTH_SHORT).show();
                    }else{
-                       Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show();
+                       removeItem(getAdapterPosition());
+                       Toast.makeText(context, "Da Xoa", Toast.LENGTH_SHORT).show();
                    }
                    return true;
                }

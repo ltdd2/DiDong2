@@ -48,7 +48,11 @@ public class QuanAnAdapter extends RecyclerView.Adapter<QuanAnAdapter.ViewHolder
    public int getItemCount() {
        return quanAns.size();
    }
-
+    public void removeItem(int ViTri){
+        TrangChuActivity.database.QueryData("DELETE FROM QuanAn WHERE Id ='"+(ViTri+1)+"'");
+        quanAns.remove(ViTri);
+        notifyItemRemoved(ViTri);
+    }
    public class ViewHolder extends RecyclerView.ViewHolder {
        CircleImageView imgHinhQuanAn;
        TextView txtTenQuanAn,txtDiaChi;
@@ -72,7 +76,8 @@ public class QuanAnAdapter extends RecyclerView.Adapter<QuanAnAdapter.ViewHolder
                    if(TrangChuActivity.KiemTra == false){
                        Toast.makeText(context,"Ban Chua Dang Nhap", Toast.LENGTH_SHORT).show();
                    }else{
-                       Toast.makeText(context, "Click", Toast.LENGTH_SHORT).show();
+                       removeItem(getAdapterPosition());
+                       Toast.makeText(context, "Da Xoa", Toast.LENGTH_SHORT).show();
                    }
                    return true;
                }
